@@ -60,23 +60,65 @@ public class Komplex {
 						);
 	}
 	
+	@Override
 	public String toString() {
 		return "[" + this.x +
-				" + " +
+				"," +
 				this.y+ 
 				"]" ;
 	}
 	
+	//Berechnung der Quadratwurzel
 	public Komplex[] getWurzel() {
+		// Wenn die Zahl 0 ist, gibt zwei 0 Komlexen Zahlen zurück
+		if(this.x == 0 && this.y == 0)
+			return new Komplex[] {new Komplex(0,0), new Komplex(0,0)};
+		
+		//Winkel Berechnung für quadratwurzel (daher durch 2 geteilt)
+		double winkel = Math.atan2(y,x) / 2;
+		
+		// Berechnet die beiden Quadratwurzeln
+		Komplex wurzel1 = new Komplex(
+				Math.sqrt(this.getBetrag()) * Math.cos(winkel),
+				Math.sqrt(this.getBetrag()) * Math.sin(winkel)
+				);
+		Komplex wurzel2 = new Komplex(
+				Math.sqrt(this.getBetrag()) * Math.cos(winkel + Math.PI),
+				Math.sqrt(this.getBetrag()) * Math.sin(winkel + Math.PI)
+				);
 		
 		
-		return Math.sqrt(x)
+		return new Komplex[] {wurzel1,wurzel2};
 	}
+	
+	
+	/** Gibt die Summe der beiden Komplexen Zahlen züruck
+	 *  param: Komplexe Zahl (Objekt)
+	 * return: Komplexe Zahl als Objekt
+	*/
 	public Komplex getSumme(Komplex z) {
-		Komplex temp()
+		//
+		Komplex temp = new Komplex (0,0);
+		
+		
+		temp.setX(z.getX() + this.x );
+		temp.setY(z.getY() + this.y );
+		
+		return temp;
 	}
+	/** Gibt den Produkt der beiden Komplexen Zahlen züruck
+	 *  param: Komplexe Zahl (Objekt)
+	 * return: Komplexe Zahl (Objekt)
+	*/
 	public Komplex getProdukt(Komplex z) {
 		
+		Komplex temp = new Komplex (0,0);
+		
+	
+		temp.setX(z.getX() * this.x );
+		temp.setY(z.getY() * this.y );
+		
+		return temp;
 	}
 
 }
