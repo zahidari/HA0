@@ -84,7 +84,13 @@ public class Komplex {
      */
     @Override
     public String toString() {
-        return "[" + this.x + "," + this.y + "]";
+        if (this.y == 0) {
+            return this.x + "";
+        } else if (this.x == 0) { // Bedingung ? Wert_wenn_true : Wert_wenn_false
+            return this.y == 1 ? "i" : this.y == -1 ? "-i" : this.y + "i";
+        } else { // Bedingung ? Wert_wenn_true : Wert_wenn_false
+            return this.x + " + " + (this.y == 1 ? "i" : this.y + "i");
+        }
     }
     
     /** Berechnet die Quadratwurzel der komplexen Zahl
@@ -134,4 +140,3 @@ public class Komplex {
     }
 
 }
-
