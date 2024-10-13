@@ -64,8 +64,13 @@ public class Komplex {
      * @param z komplexe Zahl zum Multiplizieren
      */
     public void multipliziere(Komplex z) {
-        this.x *= z.x;
-        this.y *= z.y;
+    	double a = this.x;
+    	double b = this.y;
+    	double c = z.getX();
+    	double d = z.getY();
+    	
+    	this.setX (a*c - b*d);
+    	this.setY (a*d + b*c);
     }
     
     /** Berechnet den Betrag der komplexen Zahl
@@ -84,13 +89,18 @@ public class Komplex {
      */
     @Override
     public String toString() {
-        if (this.y == 0) {
+        
+    	if (this.y == 0) 
             return this.x + "";
-        } else if (this.x == 0) { // Bedingung ? Wert_wenn_true : Wert_wenn_false
+        
+        
+        else if (this.x == 0)  // Bedingung ? Wert_wenn_true : Wert_wenn_false
             return this.y == 1 ? "i" : this.y == -1 ? "-i" : this.y + "i";
-        } else { // Bedingung ? Wert_wenn_true : Wert_wenn_false
+        
+        
+        else  // Bedingung ? Wert_wenn_true : Wert_wenn_false
             return this.x + " + " + (this.y == 1 ? "i" : this.y + "i");
-        }
+        
     }
     
     /** Berechnet die Quadratwurzel der komplexen Zahl
@@ -133,9 +143,16 @@ public class Komplex {
      * @return Produkt der komplexen Zahlen als Objekt
      */
     public Komplex getProdukt(Komplex z) {
-        Komplex temp = new Komplex(0, 0);
-        temp.setX(z.getX() * this.x);
-        temp.setY(z.getY() * this.y);
+        
+    	Komplex temp = new Komplex(0, 0);
+        double a = this.x;
+        double b = this.y;
+        double c = z.getX();
+        double d = z.getY();
+       
+        temp.setX(a*c - b*d);
+        temp.setY(a*d + b*c);
+        
         return temp;
     }
 
